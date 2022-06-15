@@ -2,13 +2,22 @@
 
 public class CaesarCipher
 {
-    private string alphabets = "abcdefghijklmnopqrstuvwxyz"; 
+    private string alphabets = "abcdefghijklmnopqrstuvwxyz";
+
+    /// <summary>
+    /// Method used to create an encrypted text using Caesar's Cipher
+    /// </summary>
+    /// <param name="s">string to be encrypted</param>
+    /// <param name="k">alphabet rotation factor</param>
+    /// <returns>returns an encrypted string</returns>
     public string caesarCipher(string s, int k)
     {
-
+        k = k % 26;
         var rotated = alphabets[k..] + alphabets[0..k];
-        var toUpper = rotated.ToUpper();
 
+
+        var toUpperAlphabets = alphabets.ToUpper();
+        var toUpperAlphabetsRotated = toUpperAlphabets[k..] + toUpperAlphabets[0..k];
 
         var cipher = "";
 
@@ -19,8 +28,8 @@ public class CaesarCipher
                 cipher += rotated[charIdx];
             else if (char.IsLetter(s[i]) && charIdx < 0)
             {
-                charIdx = alphabets.ToUpper().IndexOf(s[i]);
-                cipher += toUpper[charIdx];
+                charIdx = toUpperAlphabets.IndexOf(s[i]);
+                cipher += toUpperAlphabetsRotated[charIdx];
             }
             else
                 cipher += s[i];

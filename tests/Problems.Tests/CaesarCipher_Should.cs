@@ -6,6 +6,7 @@ public class CaesarCipher_Should
 {
     private string Word1 = "There's-a-starman-waiting-in-the-sky";
     private string Word2 = "middle-Outz";
+    private string Word3 = "www.abc.xy";
 
 
     [Fact]
@@ -39,5 +40,16 @@ public class CaesarCipher_Should
         var cipher = caesarCipher.caesarCipher(Word2, 2);
         // assert
         Assert.Equal("okffng-Qwvb", cipher);
+    }
+
+    [Fact]
+    public void caesarCipher_OutputIsString_ReturnCipher3()
+    {
+        // arrange 
+        var caesarCipher = new CaesarCipher();
+        // act 
+        var cipher = caesarCipher.caesarCipher(Word3, 87);
+        // assert
+        Assert.Equal("fff.jkl.gh", cipher);
     }
 }
